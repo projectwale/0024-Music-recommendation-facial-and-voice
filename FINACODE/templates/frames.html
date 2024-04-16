@@ -1,0 +1,115 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+
+<style>
+    #btnSearch,
+    #btnClear {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    /* CSS */
+  .button-63 {
+    align-items: center;
+    background-image: linear-gradient(144deg, #005555, #005555 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .button-63:active,
+  .button-63:hover {
+    outline: 0;
+  }
+
+  @media (min-width: 768px) {
+    .button-63 {
+      font-size: 24px;
+      min-width: 196px;
+    }
+  }
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <form action="/imagecaptures1" method="POST" id="btnSearch" class="main-input">
+
+                <center><label>Capture Images:</label></center>
+                <div>
+                    <button type="submit" class="button-63" role="button">Capture and Recommend</button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="col-xs-6">
+            <form action="/uploadimage" method="post" class="main-input" id="btnClear" enctype="multipart/form-data">
+
+                <center><label>Upload a Photo:</label></center>
+                <div>
+                    <input type="file"  name="file" id="file" required="">
+                    <br><br><br>
+                    <button type="submit" class="button-63" role="button">Upload and Recommend</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<!-- <section class="w3l-contacts-12" id="contact">
+    <div class="contact-top pt-5">
+
+        <div class="container py-md-3">
+
+            <div class="row cont-main-top">
+                <div class="col-sm-12">
+
+                    <form action="/imagecaptures1" method="POST" id="btnSearch" class="main-input">
+
+                        <center><label>Capture Images:</label></center>
+                        <div>
+                            <button type="submit" class="btn btn-theme2">Capture and Recommend</button>
+                        </div>
+
+                    </form>
+                    <hr>
+                    <form action="/uploadimage" method="post" class="main-input" id="btnClear"
+                        enctype="multipart/form-data">
+
+                        <center><label>Upload a Photo:</label></center>
+                        <div>
+                            <input type="file" placeholder="Enter Your Email Address" name="email" id="w3lName"
+                                required="">
+                            <br><br><br>
+                            <button type="submit" class="btn btn-theme2">Upload and Recommend</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+{% endblock %}

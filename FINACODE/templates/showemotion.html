@@ -1,0 +1,156 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+
+<style>
+      /* CSS */
+  .button-63 {
+    align-items: center;
+    background-image: linear-gradient(144deg, #005555, #005555 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .button-63:active,
+  .button-63:hover {
+    outline: 0;
+  }
+
+  @media (min-width: 768px) {
+    .button-63 {
+      font-size: 24px;
+      min-width: 196px;
+    }
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<section class="w3l-contacts-12" id="contact">
+    <div class="contact-top pt-5" align="center">
+        <center>
+            <h3>Your Mood Detected is {{Keymax_emotion}}</h3>
+        </center>
+        <div class="container py-md-3">
+
+            <div class="row cont-main-top">
+                <div>
+
+                    <form action="/question" method="POST" class="main-input">
+                        <!-- <h3>Your Mood Detected is {{Keymax_emotion}}</h3> -->
+                        <div class="form-check Happy box1">
+                            <label>Is this Mood is Correct ?:</label>
+                           
+                            <!-- Default radio -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="happyrad1" value="No"
+                                    id="flexRadioDefault1" />
+                                <label class="form-check-label" for="flexRadioDefault1"> No </label>
+                            </div>
+
+                            <!-- Default checked radio -->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="happyrad1" id="flexRadioDefault2"
+                                    value="Yes" />
+                                <label class="form-check-label" for="flexRadioDefault2"> Yes </label>
+                            </div>
+
+                            <div id="recomm" hidden>
+                                <button type="submit" class="button-63" role="button">Recommend</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="happyques2" hidden>
+                    <div class="form-check">
+                        <label>Sorry, Would you like to retry or would you like to answer our questionnaire?:</label>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="happyrad2" value="No"
+                                id="flexRadioDefault1" />
+                            <label class="form-check-label" for="flexRadioDefault1"> No </label>
+                        </div>
+
+                        <!-- Default checked radio -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="happyrad2" id="flexRadioDefault2"
+                                value="Yes" />
+                            <label class="form-check-label" for="flexRadioDefault2"> Yes </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-check" style="margin-top: 100px;">
+                    <div id="recomm2" hidden>
+                        <form action="/framehtml" class="main-input">
+                            <button type="submit" class="button-63" role="button">Capture Here</button>
+                        </form>
+                    </div>
+
+                    <br>
+                    <div id="recomm3" hidden>
+                        <form action="/question" class="main-input">
+                            <button type="submit" class="button-63" role="button">Questionaire</button>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<script>
+    $('input[type=radio][name=happyrad1]').change(function () {
+        if (this.value == 'Yes') {
+            console.log(this.value)
+            document.getElementById("happyques2").hidden = true;
+            document.getElementById("recomm").hidden = false
+
+        }
+        else if (this.value == 'No') {
+
+            //alert(this.value)
+            // console.log(this.value)
+            document.getElementById("happyques2").hidden = false;
+            document.getElementById("recomm").hidden = true;
+        }
+    });
+
+    $('input[type=radio][name=happyrad2]').change(function () {
+        if (this.value == 'Yes') {
+            document.getElementById("recomm").hidden = true;
+            document.getElementById("recomm2").hidden = false;
+            document.getElementById("recomm3").hidden = true
+
+        }
+        else if (this.value == 'No') {
+            document.getElementById("recomm").hidden = true;
+            document.getElementById("recomm2").hidden = true;
+            document.getElementById("recomm3").hidden = false
+        }
+    });
+
+</script>
+
+
+{% endblock %}

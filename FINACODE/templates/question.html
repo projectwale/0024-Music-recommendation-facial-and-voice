@@ -1,0 +1,72 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<section class="w3l-contacts-12" id="contact" >
+    <div class="contact-top pt-5">
+        <center><h3>Kindly Answer this Questionnaire:</h3></center>
+        <div class="container py-md-3">
+            
+            <div class="row cont-main-top">
+                <div class="contacts12-main col-lg-8 mt-lg-0 mt-5">
+                                
+                    <form action="/question" method="POST" class="main-input">
+                        <div class="top-inputs d-grid">
+                            <label>What is your Mood Right Now?:</label>
+                            <select name="mood" id="AgencyDetails">
+                                <option value="Select Here">Select</option>
+                                <option value="Happy">Happy</option>
+                                <option value="Romantic">Romantic</option>
+                                <option value="Sad">Sad</option>
+                                <option value="Angry">Angry</option>
+                                <option value="Demotivated">Demotivated</option>
+                            </select>
+                        <div class="top-inputs d-grid">
+                            <div class="Happy box1" style="display: none;">
+                                <label>Do you Feel Like Celebrating :</label>
+                                <input type="text" placeholder="Celebrating ?" name="celeb1" >
+                                <label>Do you want to Listen calm Soothing Songs:</label>
+                                <input type="text" placeholder="Listen Soothing Songs" name="sooth"  >
+                            </div>
+                            <div class="Sad box1" style="display: none;">
+                                <label>Are you feeling lonely? :</label>
+                                <input type="text" placeholder="Lonely ?" name="lonely" >
+                                <label>Are you feeling heartbroken?</label>
+                                <input type="text" placeholder="heartbroken?" name="heartbroke" >
+                                <label>Are you unable to express the reason for your sadness?</label>
+                                <input type="text" placeholder="Reason of your Sadness ?" name="sadness" >
+                            </div>
+                            <div class="Angry box1" style="display: none;">
+                                <label>Do you feel like letting it all go and just relax for some time? :</label>
+                                <input type="text" placeholder="Celebrating ?" name="celeb2" data-id="angry" >
+                                <label>Do you want to listen to motivational songs?</label>
+                                <input type="text" placeholder="Listen Soothing Songs" name="sooth2" data-id="angry" >
+                            </div>
+                            <div  >
+                                <button type="submit" class="btn btn-theme2">Recommend</button>
+                            </div>
+                           
+                           
+                       
+                    </form>
+                </div>
+</section>
+
+<script>
+    
+    $(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box1").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box1").hide();
+            }
+        });
+    }).change();
+    });
+
+</script>
+
+{% endblock %}

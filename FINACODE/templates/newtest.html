@@ -1,0 +1,379 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+
+<style>
+  /* CSS */
+  .button-63 {
+    align-items: center;
+    background-image: linear-gradient(144deg, #005555, #005555 50%, #00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .button-63:active,
+  .button-63:hover {
+    outline: 0;
+  }
+
+  @media (min-width: 768px) {
+    .button-63 {
+      font-size: 24px;
+      min-width: 196px;
+    }
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<section class="w3l-contacts-12" id="contact">
+  <div class="contact-top pt-5">
+    <center>
+      <h3>Kindly Answer this Questionnaire:</h3>
+    </center>
+    <div class="container py-md-3">
+
+      <div class="row cont-main-top">
+        <div class="contacts12-main col-lg-8 mt-lg-0 mt-5">
+
+          <form action="/question" method="POST" class="main-input">
+            <div class="container">
+              <label>What is your Mood Right Now?:</label>
+              <!-- <select name="mood" id="AgencyDetails">
+                <option value="Select Here">Select</option>
+                <option value="Happy" selected>Happy</option>
+                <option value="Romantic">Romantic</option>
+                <option value="Sad">Sad</option>
+                <option value="Angry">Angry</option>
+                <option value="Demotivated">Demotivated</option>
+              </select> -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="selectop" value="Happy" id="flexRadioDefault1" />
+                <label class="form-check-label" for="flexRadioDefault1"> Happy </label>
+
+              </div>
+
+
+              <!-- Default checked radio -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="selectop" id="flexRadioDefault2" value="Romantic" />
+                <label class="form-check-label" for="flexRadioDefault2"> Romantic </label>
+
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="selectop" value="Sad" id="flexRadioDefault1" />
+                <label class="form-check-label" for="flexRadioDefault1"> Sad </label>
+
+
+              </div>
+
+              <!-- Default checked radio -->
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="selectop" id="flexRadioDefault2" value="Angry" />
+                <label class="form-check-label" for="flexRadioDefault2"> Angry </label>
+
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="selectop" value="Demotivated"
+                  id="flexRadioDefault1" />
+                <label class="form-check-label" for="flexRadioDefault1"> Demotivated </label>
+
+
+              </div>
+            </div>
+
+
+
+
+
+
+              <div class="top-inputs d-grid">
+                <div id="Happybox1" hidden>
+                  <label>Do you Feel Like Celebrating :</label>
+                  <input type="radio" name="happyrad1" id="no" value="No">No
+                  <input type="radio" name="happyrad1" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                </div>
+                <!-- <input type="text" placeholder="Celebrating ?" name="celeb1" > -->
+                <div id="happyques2" hidden>
+                  <div id="Happybox2" hidden>
+                    <label>Do you want to Listen calm Soothing Songs:</label>
+                    <input type="radio" name="happyrad2" id="no" value="No">No
+                    <input type="radio" name="happyrad2" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                    <!-- <input type="text" placeholder="Listen Soothing Songs" name="sooth"  > -->
+                  </div>
+                </div>
+
+                <div id="Sadbox1" hidden>
+                  <label>Are you feeling lonely? :</label>
+                  <input type="radio" name="sadrad1" id="no" value="No">No
+                  <input type="radio" name="sadrad1" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                </div>
+                <!-- <input type="text" placeholder="Celebrating ?" name="celeb1" > -->
+                <div id="sadques2" hidden>
+                  <div class="Sadbox1">
+                    <label>Are you feeling heartbroken?</label>
+                    <input type="radio" name="sadrad2" id="no" value="No">No
+                    <input type="radio" name="sadrad2" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                    <!-- <input type="text" placeholder="Listen Soothing Songs" name="sooth"  > -->
+                  </div>
+                </div>
+                <div id="sadques3" hidden>
+                  <div class="Sad box1">
+                    <label>Are you unable to express the reason for your sadness?</label>
+                    <input type="radio" name="sadrad3" id="no" value="No">No
+                    <input type="radio" name="sadrad3" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                    <!-- <input type="text" placeholder="Listen Soothing Songs" name="sooth"  > -->
+                  </div>
+                </div>
+
+                <div id="Angrybox1" hidden>
+                  <label>Do you feel like letting it all go and just relax for some time? :</label>
+                  <input type="radio" name="angryrad1" id="no" value="No">No
+                  <input type="radio" name="angryrad1" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                </div>
+                <!-- <input type="text" placeholder="Celebrating ?" name="celeb1" > -->
+                <div id="angryques2" hidden>
+                  <div class="Angry box1">
+                    <label>Do you want to listen to motivational songs?</label>
+                    <input type="radio" name="angryrad2" id="no" value="No">No
+                    <input type="radio" name="angryrad2" class="show_hide" rel="#slidingDiv" id="yes" value="Yes">Yes
+                    <!-- <input type="text" placeholder="Listen Soothing Songs" name="sooth"  > -->
+                  </div>
+                </div>
+
+
+                <div id="recomm" hidden>
+                  <button type="submit" class="button-63" role="button">Recommend</button>
+                </div>
+                <!-- <label>Do you Feel Like Celebrating :</label>
+                            <input type="text" placeholder="Celebrating ?" name="celeb" data-id="celeb" id="w3lName" required="">
+                            <label>Do you want to Listen calm Soothing Songs:</label>
+                            <input type="password" placeholder="Listen Soothing Songs" name="sooth" data-id="celeb" id="w3lName" required=""> -->
+
+
+
+
+
+
+
+
+
+
+                <!-- <select name="Agency" id="AgencyDetails">
+                                <option value="0">Select Agency..</option>
+                                <option value="Name 1" data-id="Name1">Name1</option>
+                                <option value="Name 2" data-id="Name2">Name2</option>
+                                <option value="Name 3" data-id="Name3">Name3</option>
+                                <option value="Others" data-id="AddDiv">Others</option>
+                              </select>
+                              <div id="AddDiv" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="AddDiv" type="text" name="agentName" />
+                                </li>
+                              </div>
+                              <div id="Name1" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name1" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div>
+                              <div id="Name2" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name2" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div>
+                              <div id="Name3" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name3" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div> -->
+
+
+          </form>
+        </div>
+</section>
+
+<script>
+  $('input[type=radio][name=selectop]').change(function () {
+    if (this.value == 'Happy') {
+      // For happy
+      console.log(this.value)
+      document.getElementById("Happybox1").hidden = false
+      document.getElementById("Sadbox1").hidden = true
+      document.getElementById("Angrybox1").hidden = true
+      $('input[type=radio][name=happyrad1]').change(function () {
+        if (this.value == 'Yes') {
+
+          document.getElementById("happyques2").hidden = true;
+          document.getElementById("recomm").hidden = false
+
+        }
+        else if (this.value == 'No') {
+          document.getElementById("Happybox2").hidden = false;
+          document.getElementById("happyques2").hidden = false;
+          document.getElementById("recomm").hidden = false
+        }
+      });
+    }
+
+    else if (this.value == 'Romantic') {
+      document.getElementById("recomm").hidden = false
+      document.getElementById("Happybox1").hidden = true
+      document.getElementById("Sadbox1").hidden = true
+      document.getElementById("Angrybox1").hidden = true
+      document.getElementById("Happybox2").hidden = false;
+
+
+
+    }
+
+    else if (this.value == 'Sad') {
+      document.getElementById("Happybox1").hidden = true
+      document.getElementById("Sadbox1").hidden = false
+      document.getElementById("Angrybox1").hidden = true
+      document.getElementById("Happybox2").hidden = false;
+
+
+      $('input[type=radio][name=sadrad1]').change(function () {
+        if (this.value == 'Yes') {
+
+          document.getElementById("sadques2").hidden = true;
+          document.getElementById("Happybox2").hidden = false;
+          document.getElementById("recomm").hidden = false
+
+        }
+        else if (this.value == 'No') {
+          document.getElementById("Happybox2").hidden = false;
+
+          document.getElementById("sadques2").hidden = false;
+          document.getElementById("recomm").hidden = false
+        }
+      });
+
+      $('input[type=radio][name=sadrad2]').change(function () {
+        if (this.value == 'Yes') {
+          document.getElementById("Happybox2").hidden = false;
+
+          document.getElementById("sadques3").hidden = true;
+          document.getElementById("recomm").hidden = false
+
+        }
+        else if (this.value == 'No') {
+          document.getElementById("Happybox2").hidden = false;
+
+          document.getElementById("sadques3").hidden = false;
+          document.getElementById("recomm").hidden = false
+        }
+      });
+    }
+    else if (this.value == 'Angry') {
+      document.getElementById("Happybox2").hidden = false;
+
+      document.getElementById("Happybox1").hidden = true
+      document.getElementById("Sadbox1").hidden = true
+      document.getElementById("Angrybox1").hidden = false
+
+      $('input[type=radio][name=angryrad1]').change(function () {
+        if (this.value == 'Yes') {
+          document.getElementById("Happybox2").hidden = false;
+
+          document.getElementById("angryques2").hidden = true;
+          document.getElementById("recomm").hidden = false
+
+        }
+        else if (this.value == 'No') {
+          document.getElementById("Happybox2").hidden = false;
+
+          document.getElementById("angryques2").hidden = false;
+          document.getElementById("recomm").hidden = false
+        }
+      });
+    }
+    else if (this.value == 'Demotivated') {
+      document.getElementById("Happybox2").hidden = false;
+
+      document.getElementById("recomm").hidden = false
+      document.getElementById("Happybox1").hidden = true
+      document.getElementById("Sadbox1").hidden = true
+      document.getElementById("Angrybox1").hidden = true
+
+    }
+  });
+
+  // For happy
+  // $('input[type=radio][name=happyrad1]').change(function () {
+  //   if (this.value == 'Yes') {
+
+  //     document.getElementById("happyques2").hidden = true;
+  //     document.getElementById("recomm").hidden = false
+
+  //   }
+  //   else if (this.value == 'No') {
+
+  //     document.getElementById("happyques2").hidden = false;
+  //     document.getElementById("recomm").hidden = false
+  //   }
+  // });
+
+
+
+
+
+
+</script>
+
+<script>
+  // var details;
+  // var agencyChanged = function(e) {
+  // details.hide();
+  // var id = $(this).find(':selected').data('id');
+  // if (id) $('#' + id).show();
+  // };
+  // $(function() {
+  // details = $('div.details');
+  // $('#AgencyDetails').on('change keyup', agencyChanged).trigger('change');
+  // });
+  // var details;
+  // var agencyChanged = function(e) {
+  // details.hide();
+  // var id = $(this).find(':selected').data('id');
+  // if (id) $('#' + id).show();
+  // };
+  // $(function() {
+  // details = $('div.top-inputs d-grid');
+  // $('#AgencyDetails').on('change keyup', agencyChanged).trigger('change');
+  // });
+  $(document).ready(function () {
+    $("select").change(function () {
+      $(this).find("option:selected").each(function () {
+        var optionValue = $(this).attr("value");
+        if (optionValue) {
+          $(".box1").not("." + optionValue).hide();
+          $("." + optionValue).show();
+        } else {
+          $(".box1").hide();
+        }
+      });
+    }).change();
+  });
+//     function displayDivDemo(id, elementValue) {
+//       document.getElementById(id).style.display = elementValue.value == 1 ? 'block' : 'none';
+//    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Untree.co" />
+  <link rel="shortcut icon" href="../statics/favicon.png" />
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap5" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../static/fonts/icomoon/style.css" />
+  <link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css" />
+
+  <link rel="stylesheet" href="../static/css/tiny-slider.css" />
+  <link rel="stylesheet" href="../static/css/aos.css" />
+  <link rel="stylesheet" href="../static/css/style.css" />
+  <style>
+    .pulse-button {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      font-size: 1.3em;
+      font-weight: light;
+      font-family: 'Trebuchet MS', sans-serif;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 100px;
+      letter-spacing: -1px;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      background: url('../static/images/ff.jpg') center center no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      box-shadow: 0 0 0 0 rgba(90, 153, 212, 0.5);
+      -webkit-animation: pulse 1.5s infinite;
+    }
+
+
+    .pulse-button:hover {
+      -webkit-animation: none;
+    }
+
+    @-webkit-keyframes pulse {
+      0% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+      }
+
+      70% {
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+      }
+
+      100% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+      }
+    }
+  </style>
+
+  <title>
+    MUSIC RECOMMEDATION
+  </title>
+  <style>
+    .hero {
+      background-image: url('../static/images/bg.jpg');
+      /* height: 500px; */
+      background-size: cover;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="container">
+      <div class="menu-bg-wrap">
+        <div class="site-navigation">
+          <a href="/home" class="logo m-0 float-start"> MUSIC RECOMMEDATION </a>
+
+          <ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end">
+            <li class="active"><a href="/home">HOME</a></li>
+            <li><a href="/prediction">RECOFACE</a></li>
+            <li><a href="/voicespeech">RECOVOICE</a></li>
+            <li><a href="/searchall">LISTEN</a></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/contact">CONTACT</a></li>
+            <li><a href="/logout">LOGOUT</a></li>
+          </ul>
+
+
+          <a href="#"
+            class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
+            data-toggle="collapse" data-target="#main-navbar">
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero page-inner overlay">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-lg-9 text-center mt-5">
+          <h1 class="heading" data-aos="fade-up">Speech emotion Recommendation</h1>
+
+          <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-delay="200">
+            <ol class="breadcrumb text-center justify-content-center">
+              <li class="breadcrumb-item"><a href="/root">Home</a></li>
+              <li class="breadcrumb-item active text-white-50" aria-current="page">
+                Speech emotion Recommendation
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="row text-left mb-5">
+
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <form action="/startspeechemotion" method="post">
+              <br><br>
+              <div class="right-w3l">
+                <!-- <button type="submit" style="width:300px" class="btn btn-primary">Speech emotion </button> -->
+
+                <button class='pulse-button' type="submit" onclick="myFunction()">
+
+                </button>
+
+                <center> <img class="right-w3l mt-5" src="../static/images/giphy.gif" style="width: 400px; height: 250px; display:none"
+                    id="recimg"> </center>
+
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function myFunction() {
+      var element = document.getElementById("recimg");
+      element.style.display = "block";
+    }
+  </script>
+
+  <div class="site-footer">
+    <div class="container">
+
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <!-- 
+              **==========
+              NOTE: 
+              Please don't remove this copyright link unless you buy the license here https://untree.co/license/  
+              **==========
+            -->
+
+          <p>
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            . All Rights Reserved.
+            <!-- License information: https://untree.co/license/ -->
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.site-footer -->
+
+  <script src="../static/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/js/tiny-slider.js"></script>
+  <script src="../static/js/aos.js"></script>
+  <script src="../static/js/navbar.js"></script>
+  <script src="../static/js/counter.js"></script>
+  <script src="../static/js/custom.js"></script>
+</body>
+
+</html>

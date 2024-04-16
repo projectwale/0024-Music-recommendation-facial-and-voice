@@ -1,0 +1,189 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<style>
+    #slidingDiv,
+    #slidingDiv_2,
+    #alert-user {
+        display: none;
+    }
+</style>
+<section class="w3l-contacts-12" id="contact">
+    <div class="contact-top pt-5">
+        <center>
+            <h3>Kindly Answer this Questionnaire:</h3>
+        </center>
+        <div class="container py-md-3">
+
+            <div class="row cont-main-top">
+                <div class="contacts12-main col-lg-8 mt-lg-0 mt-5">
+
+                    <form action="/question" method="POST" class="main-input">
+                        <div class="top-inputs d-grid">
+                            <label>What is your Mood Right Now?:</label>
+                            <select name="mood" id="AgencyDetails">
+                                <option value="Select Here">Select</option>
+                                <option value="Happy">Happy</option>
+                                <option value="Romantic">Romantic</option>
+                                <option value="Sad">Sad</option>
+                                <option value="Angry">Angry</option>
+                                <option value="Demotivated">Demotivated</option>
+                            </select>
+                            <div class="top-inputs d-grid">
+                                <div class="Happy box1" style="display: none;">
+                                    I am having a Cloud My Office log in issue
+                                    <input type="radio" name="myofficeissue" id="no" value="No">No
+                                    <input type="radio" name="myofficeissue" class="show_hide" rel="#slidingDiv"
+                                        id="yes" value="Yes">Yes
+                                    <div id="slidingDiv">
+                                        I am having a username and password issue.
+                                        <input type="radio" name="passwordissue" id="passwordissue-0" value="No">No
+                                        <input type="radio" name="passwordissue" class="show_hide" rel="#slidingDiv_2"
+                                            id="passwordissue-1" value="Yes">Yes
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="Sad box1" style="display: none;">
+                <label>Are you feeling lonely? :</label>
+                <input type="text" placeholder="Lonely ?" name="lonely">
+                <label>Are you feeling heartbroken?</label>
+                <input type="text" placeholder="heartbroken?" name="heartbroke">
+                <label>Are you unable to express the reason for your sadness?</label>
+                <input type="text" placeholder="Reason of your Sadness ?" name="sadness">
+            </div>
+            <div class="Angry box1" style="display: none;">
+                <label>Do you feel like letting it all go and just relax for some time?
+                    :</label>
+                <input type="text" placeholder="Celebrating ?" name="celeb2" data-id="angry">
+                <label>Do you want to listen to motivational songs?</label>
+                <input type="text" placeholder="Listen Soothing Songs" name="sooth2" data-id="angry">
+            </div>
+            <div id="alert-user">
+                <button type="submit" id="happysubmit" class="btn btn-theme2">Recommend</button>
+            </div>
+            <!-- <label>Do you Feel Like Celebrating :</label>
+                            <input type="text" placeholder="Celebrating ?" name="celeb" data-id="celeb" id="w3lName" required="">
+                            <label>Do you want to Listen calm Soothing Songs:</label>
+                            <input type="password" placeholder="Listen Soothing Songs" name="sooth" data-id="celeb" id="w3lName" required=""> -->
+
+
+
+
+
+
+
+
+
+
+            <!-- <select name="Agency" id="AgencyDetails">
+                                <option value="0">Select Agency..</option>
+                                <option value="Name 1" data-id="Name1">Name1</option>
+                                <option value="Name 2" data-id="Name2">Name2</option>
+                                <option value="Name 3" data-id="Name3">Name3</option>
+                                <option value="Others" data-id="AddDiv">Others</option>
+                              </select>
+                              <div id="AddDiv" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="AddDiv" type="text" name="agentName" />
+                                </li>
+                              </div>
+                              <div id="Name1" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name1" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div>
+                              <div id="Name2" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name2" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div>
+                              <div id="Name3" class='details'>
+                                <li class="bigfield">
+                                  <input placeholder="Name3" type="text" name="agentName" disabled="disabled" />
+                                </li>
+                              </div> -->
+
+
+            </form>
+        </div>
+</section>
+
+<script>
+    // var details;
+    // var agencyChanged = function(e) {
+    // details.hide();
+    // var id = $(this).find(':selected').data('id');
+    // if (id) $('#' + id).show();
+    // };
+    // $(function() {
+    // details = $('div.details');
+    // $('#AgencyDetails').on('change keyup', agencyChanged).trigger('change');
+    // });
+    // var details;
+    // var agencyChanged = function(e) {
+    // details.hide();
+    // var id = $(this).find(':selected').data('id');
+    // if (id) $('#' + id).show();
+    // };
+    // $(function() {
+    // details = $('div.top-inputs d-grid');
+    // $('#AgencyDetails').on('change keyup', agencyChanged).trigger('change');
+    // });
+    $(document).ready(function () {
+        $("select").change(function () {
+            $(this).find("option:selected").each(function () {
+                var optionValue = $(this).attr("value");
+                if (optionValue) {
+                    $(".box1").not("." + optionValue).hide();
+                    $("." + optionValue).show();
+                } else {
+                    $(".box1").hide();
+                }
+            });
+        }).change();
+    });
+    //     function displayDivDemo(id, elementValue) {
+    //       document.getElementById(id).style.display = elementValue.value == 1 ? 'block' : 'none';
+    //    }
+</script>
+
+<script>
+    //     $(document).ready(function(){
+    //     $("input:radio").change(function(){
+    //         console.log(this);
+    //         if(this.value == 'Yes' && this.name == 'myofficeissue'){
+    //             $('#slidingDiv').slideDown();
+    //             $('#alert-user').slideUp();
+    //         }else if(this.value == 'No' && this.name == 'myofficeissue'){
+    //         $('#alert-user').slideDown();
+    //             $('#slidingDiv').slideUp();
+    //             $('#alert-user').slideUp();
+    //             $('#slidingDiv_2').slideUp();
+    //         }else if(this.value == 'Yes' && this.name == 'passwordissue'){
+    //             $('#slidingDiv_2').slideDown();
+    //             $('#alert-user').slideUp();
+    //         }else if(this.value == 'No' && this.name == 'passwordissue'){
+    //             $('#slidingDiv_2').slideUp();
+    //             $('#alert-user').slideDown();
+    //         }
+    //     });
+    // });
+
+    if (document.getElementById('yes').checked) {
+        //display submit
+        // var element = document.getElementById("happysubmit");
+        // element.setAttribute("hidden", true);
+        alert("yes");
+    } else if (document.getElementById('no').checked) {
+        //display next question
+        // var element = document.getElementById("happysubmit");
+        // element.setAttribute("hidden", false);
+        alert("No");
+    }
+</script>
+
+{% endblock %}

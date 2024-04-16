@@ -1,0 +1,128 @@
+{% extends 'homeheader.html'%}
+{% block content %}
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="author" content="colorlib.com">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+  <link href="../static/search_css/search_main.css" rel="stylesheet" />
+
+
+  <meta name="description" content="Bootstrap.">
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+  </style>
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<div class="s010">
+  <form action="{{ url_for('searchall') }}" method='POST'>
+    <div class="inner-form" style="margin-left: 50%;">
+      <div class="basic-search">
+        <div class="input-field">
+          <input id="search" name='name' type="text" placeholder="Search Song,Artist, album ....." />
+          <div class="icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+              </path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="row third">
+        <div class="input-field">
+          <div class="group-btn">
+            <button type="submit" class="btn-search">SEARCH</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br><hr/>
+  <div class="container" background="../static/backimage/1.jpg">
+    <div class="row header" style="text-align:center;color:rgb(244, 247, 244)">
+      <h3>Songs</h3>
+    </div>
+    <table id="myTable" class="table table-hover rounded">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Play Song</th>
+          <th scope="col">Artist</th>
+          <th scope="col">Album</th>
+          <th scope="col">Popularity [0, 100]</th>
+        </tr>
+      </thead>
+      {% for track in results %}
+      <tr>
+        <td style="width:300px;">
+          <a href="{{ track.external_urls.spotify }}">{{ track.name }}</a>
+        </td>
+        <td style="width:300px;">
+          <iframe src="https://open.spotify.com/embed/track/{{track.id}}" width="250" height="80"
+            frameborder="0" key="{{track.id}}" allowtransparency="true" allow="encrypted-media"></iframe>
+        </td>
+        <td style="width:300px;">
+          {% for artist in track.artists %}
+          <a href="https://open.spotify.com/artist/{{artist.id}}"> {{ artist.name }} </a>
+          {% endfor %}
+        </td>
+        <td class="number" style="width:300px;">
+          <a href="{{ track.external_urls.spotify }}"> {{ track.album.name }} </a>
+        </td>
+        <td class="number" style="width:300px;">{{ track.popularity }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+
+<!-- </body>   -->
+<script>
+  $(document).ready(function () {
+    $('#myTable').dataTable();
+  });
+</script>
+
+<script src="js/extention/choices.js"></script>
+<script>
+  const customSelects = document.querySelectorAll("select");
+  const deleteBtn = document.getElementById('delete')
+  const choices = new Choices('select',
+    {
+      searchEnabled: false,
+      itemSelectText: '',
+      removeItemButton: true,
+    });
+  for (let i = 0; i < customSelects.length; i++) {
+    customSelects[i].addEventListener('addItem', function (event) {
+      if (event.detail.value) {
+        let parent = this.parentNode.parentNode
+        parent.classList.add('valid')
+        parent.classList.remove('invalid')
+      }
+      else {
+        let parent = this.parentNode.parentNode
+        parent.classList.add('invalid')
+        parent.classList.remove('valid')
+      }
+    }, false);
+  }
+  deleteBtn.addEventListener("click", function (e) {
+    e.preventDefault()
+    const deleteAll = document.querySelectorAll('.choices__button')
+    for (let i = 0; i < deleteAll.length; i++) {
+      deleteAll[i].click();
+    }
+  });
+
+</script>
+
+{% endblock %}
